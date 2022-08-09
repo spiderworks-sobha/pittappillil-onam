@@ -10,14 +10,15 @@
 	<title>Aster Medcity </title>
 	<link rel="shortcut icon" href="http://localhost/tist/assets/images/fav.png"/>
 <!-- styles-->
-<link rel="stylesheet" href="{{asset('public/assets/web')}}/css/bootstrap.css "/> 
-<link rel="stylesheet" href="{{asset('public/assets/web')}}/css/theme.css "/>  
+<link rel="stylesheet" href="<?php echo e(asset('public/assets/web')); ?>/css/bootstrap.css "/> 
+<link rel="stylesheet" href="<?php echo e(asset('public/assets/web')); ?>/css/theme.css "/>  
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">  
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"> 
-        {{ $head??'' }}
+        <?php echo e($head??''); ?>
+
  
 	<!-- top -->
  
@@ -27,7 +28,8 @@
 
     <!-- Button trigger modal -->
 
-              {{ $slot }}
+              <?php echo e($slot); ?>
+
 
    
 
@@ -38,7 +40,7 @@
             <div class="container">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-4">
-                    <img width="150px" src="{{asset('public/assets/web')}}/img/pittappillil-logo.webp" alt="..."> 
+                    <img width="150px" src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.webp" alt="..."> 
                             
                     </div>
                      <div class="col-md-4 foot-text" style="">
@@ -80,7 +82,8 @@
  
 
  
-  {{ $footer??'' }}
+  <?php echo e($footer??''); ?>
+
 
 <script type="text/javascript"> 
  
@@ -117,4 +120,4 @@
  
 
 </body>
-</html>
+</html><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/layouts/default.blade.php ENDPATH**/ ?>

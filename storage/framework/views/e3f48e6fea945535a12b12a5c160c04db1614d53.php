@@ -1,5 +1,10 @@
-<x-default-layout>
-    <x-slot name="head">
+<?php if (isset($component)) { $__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\DefaultLayout::class, []); ?>
+<?php $component->withName('default-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('head', null, []); ?> 
         <style>
 label.error {
     color: red;
@@ -17,7 +22,7 @@ label.error {
 }
  
         </style>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
     
     
   <!-- Modal -->
@@ -57,7 +62,7 @@ label.error {
   </div>
   <div class="col-md-7 p-0">
 <div class="success-img-cntr">
-    <img src="{{asset('public/assets/web')}}/img/prev.png" alt="..." class="img-fluid">
+    <img src="<?php echo e(asset('public/assets/web')); ?>/img/prev.png" alt="..." class="img-fluid">
     <span class="blur-text">xxx xxx</span>
     <p id="success_name"></p>
 </div>
@@ -95,11 +100,11 @@ label.error {
                         <div class="row">
                             <div class="col-7 otp-fild">
                                 <form id="otp-form">
-                                    @csrf
+                                    <?php echo csrf_field(); ?>
                                   <input type="text" name="otp_number" id="otp_number" class="form-control" placeholder="- - - -  " aria-label="First name" maxlength= "4">
 
                                 </form>
-                                <i class="loading"><img src="{{asset('public/assets/img/loading.gif')}}" width="50" height="30"  /></i>
+                                <i class="loading"><img src="<?php echo e(asset('public/assets/img/loading.gif')); ?>" width="50" height="30"  /></i>
                               <i class="ri-check-fill pass" id="pass"></i>
                               <i class="ri-close-fill fail" id="fail"></i>
                             </div>
@@ -190,7 +195,7 @@ label.error {
 <div class="container">
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid p-0">
-    <a class="navbar-brand" href="#"><img src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" alt="..."> </a>
+    <a class="navbar-brand" href="#"><img src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.png" alt="..."> </a>
 </nav>
 </div>
 </div>
@@ -206,12 +211,12 @@ label.error {
                     
 
                     <form id="application-form" role="form"  >
-                                @csrf
+                                <?php echo csrf_field(); ?>
 
                         <div class=" form-cntr-main">
 
                             <div class="row g-3">
-                            <input type="hidden" name="card_type" value="{{$card_type_id}}">
+                            <input type="hidden" name="card_type" value="<?php echo e($card_type_id); ?>">
 
 
 
@@ -229,7 +234,7 @@ label.error {
                             <div class="form-group phon-number-fld">
 
                                 <div class="input-group  ">
-                                 <img src="{{asset('public/assets/web')}}/img/india.png" alt="..." class="img-fluid">
+                                 <img src="<?php echo e(asset('public/assets/web')); ?>/img/india.png" alt="..." class="img-fluid">
                                         
                                     <span class="input-group-text" id="basic-addon1">  +91</span>  
                                       <input type="tel" id="phone" name="phone" class="form-control"  placeholder="Phone Number" maxlength= "10">
@@ -331,8 +336,8 @@ label.error {
   
 
 
-        <x-slot name="footer">
-        <script src="{{asset('public/assets/web')}}/js/validate.js"></script>
+         <?php $__env->slot('footer', null, []); ?> 
+        <script src="<?php echo e(asset('public/assets/web')); ?>/js/validate.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
          $(document).ready(function() {
@@ -347,7 +352,7 @@ label.error {
                         maxlength: 10,
                         digits: true,
                         remote: {
-                            url: "{{ url('phone_check') }}",
+                            url: "<?php echo e(url('phone_check')); ?>",
                             type: 'POST',
                             async: false,
                             data: {
@@ -419,7 +424,7 @@ label.error {
             }),
             $('#application-btn').on("click", function(e) {
                 e.preventDefault();
-                var img = "{{asset('public/assets')}}/img/logo.jpg";
+                var img = "<?php echo e(asset('public/assets')); ?>/img/logo.jpg";
                 if ($("#application-form").valid()) {
                     $("#exampleModal").modal('show');
                     $("#pre_name").text($("#salutation").val() + $("#name").val());
@@ -439,7 +444,7 @@ label.error {
 
                             $.ajax({
                                 type: 'POST',
-                                url: "{{url('application/save')}}",
+                                url: "<?php echo e(url('application/save')); ?>",
                                 data: data+"&otp_state="+otp_state,
                                 success: function(data) {
                                     if (JSON.stringify(data.success)) {
@@ -513,7 +518,7 @@ label.error {
                         $('.loading').addClass('active');
                         $.ajax({
                             type: 'post',
-                            url: "{{url('otp_check')}}",
+                            url: "<?php echo e(url('otp_check')); ?>",
                             data: data,
                             success: function(res) {
                                 if (res.faild) {
@@ -544,7 +549,7 @@ label.error {
           
              $.ajax({
                             type: 'post',
-                            url: "{{url('otp_send')}}",
+                            url: "<?php echo e(url('otp_send')); ?>",
                             data: {
                                 _token: function() {
                                     var token = $('input[name="_token"]').attr('value');
@@ -570,7 +575,7 @@ label.error {
 
                                           $.ajax({
                                                         type: 'POST',
-                                                        url: "{{url('application/save')}}",
+                                                        url: "<?php echo e(url('application/save')); ?>",
                                                         data: _data+"&otp_state="+otp_state,
                                                         success: function(res) {
                                                         if (res.faild) {
@@ -607,7 +612,7 @@ label.error {
              var phone =$("#phone").val();
               $.ajax({
                             type: 'post',
-                            url: "{{url('otp_send')}}",
+                            url: "<?php echo e(url('otp_send')); ?>",
                             data: {
                                 _token: function() {
                                     var token = $('input[name="_token"]').attr('value');
@@ -633,7 +638,7 @@ label.error {
 
                                           $.ajax({
                                                         type: 'POST',
-                                                        url: "{{url('application/save')}}",
+                                                        url: "<?php echo e(url('application/save')); ?>",
                                                         data: _data+"&otp_state="+otp_state,
                                                         success: function(res) {
                                                         if (res.faild) {
@@ -662,5 +667,10 @@ label.error {
         //  });
     }); 
         </script>
-    </x-slot>
-</x-default-layout>
+     <?php $__env->endSlot(); ?>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7)): ?>
+<?php $component = $__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7; ?>
+<?php unset($__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7); ?>
+<?php endif; ?><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/web/home.blade.php ENDPATH**/ ?>
