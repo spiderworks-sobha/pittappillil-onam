@@ -1,0 +1,31 @@
+body{
+       background: #fff  !important;
+}
+.forget-pwd > a{
+    color: #dc3545;
+    font-weight: 500;
+}
+.forget-password .panel-default{
+    padding: 31%;
+    margin-top: -27%;
+}
+.forget-password .panel-body{
+    padding: 10%;
+    margin-bottom: -50%;
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    background: #f7fbff  !important;    border: 1px solid rgba(104, 104, 104, 0.15);    box-shadow: 0px 11px 37px rgb(72 113 215 / 9%);    border-radius: 5px;    transition: .25s;
+}
+img{
+    width:40%;
+    margin-bottom:10%;
+}.form-control {    font-size: 17px;    border: 1px solid #d2e4ff;    min-height: 50px;    color: #4f5d66;    background-color: #fff;    margin-bottom: 8px !important;}
+.forget-password .dropdown{
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.forget-password .dropdown button{
+    width: 100%;
+}
+.forget-password .dropdown ul{
+    width: 100%;
+}.btnForget {    width: 100%;    background: #2D3387 !important;    color: white !important;    min-height: 50px;    font-size: 17px;    transition:.25;	  }.btnForget:hover {    transition: .25s;    background: #00AE96 !important;}.form-control:focus{  outline:none;	   box-shadow: 0px;    box-shadow: none;}
