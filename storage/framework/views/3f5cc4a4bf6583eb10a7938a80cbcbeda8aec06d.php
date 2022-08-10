@@ -167,6 +167,8 @@
             }
 
             function dt(){
+                if($('#form-modal').length)
+                    $('#form-modal').modal('hide');
                 if($('#datatable').length)
                 {
                     $('#datatable').DataTable().clear().destroy();

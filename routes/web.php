@@ -5,6 +5,7 @@ use App\Http\Controllers\Web\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\SpecialInvoiceController;
+use App\Http\Controllers\Admin\SubmissionController;
 
 
 
@@ -46,6 +47,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('special-invoices/change-status/{id}', [SpecialInvoiceController::class, 'changeStatus'])->name('admin.special-invoices.change-status');
     Route::post('special-invoices/store', [SpecialInvoiceController::class, 'store'])->name('admin.special-invoices.store');
     Route::post('special-invoices/update', [SpecialInvoiceController::class, 'update'])->name('admin.special-invoices.update');
+
+    //submissions
+    Route::get('submissions', [SubmissionController::class, 'index'])->name('admin.submissions.index');
+    Route::get('submissions/create', function(){
+        return abort('404');
+    })->name('admin.submissions.create');
+    Route::get('submissions/edit/{id}', [SubmissionController::class, 'edit'])->name('admin.submissions.edit');
+    Route::get('submissions/destroy/{id}', [SubmissionController::class, 'destroy'])->name('admin.submissions.destroy');
+    Route::get('submissions/change-status/{id}', function(){
+        return abort('404');
+    })->name('admin.submissions.change-status');
+    Route::post('submissions/update', [SubmissionController::class, 'update'])->name('admin.submissions.update');
 
     // settings
     Route::get('admin/settings', [SettingsController::class, 'index'])->name('admin.settings');

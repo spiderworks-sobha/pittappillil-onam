@@ -20,20 +20,25 @@ class Submission extends Model
     protected $table = 'submissions';
 
 
-    protected $fillable = array('name', 'phone_number', 'branch', 'invoice', 'gift', 'is_gold_coin', 'claim_status', 'claimed_on');
+    protected $fillable = array('name', 'phone_number', 'branch', 'invoice', 'gifts_id', 'is_gold_coin', 'claim_status', 'claimed_on', 'note');
 
     protected $dates = ['created_at','updated_at'];
 
     protected function setRules() {
 
         $this->val_rules = array(
-            'invoice' => 'required|max:250',
+            'claim_status' => 'required',
         );
     }
 
     protected function setAttributes() {
         $this->val_attributes = array(
         );
+    }
+
+    public function gift()
+    {
+        return $this->belongsTo('App\Models\Gift', 'gifts_id');
     }
 
 }

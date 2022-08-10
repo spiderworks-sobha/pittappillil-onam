@@ -10,6 +10,9 @@
         <li>
             <a href="{{route('admin.special-invoices.index')}}"><i class="fas fa-table"></i> Special Invoices</a>
         </li>
+        <li>
+            <a href="{{route('admin.submissions.index')}}"><i class="fas fa-table"></i> Submissions</a>
+        </li>
         {{--<li>
             <a href="{{route('admin.settings')}}"><i class="fas fa-cog"></i> Settings</a>
         </li>--}}

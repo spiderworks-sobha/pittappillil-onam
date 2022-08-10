@@ -65,7 +65,7 @@ class SpecialInvoiceController extends Controller
         }
     }
 
-    public function update(HttpRequest $request) {
+    public function update(Request $request) {
         $data = $request->all();
         $id = decrypt($data['id']);
     	$this->model->validate($data, $id);
