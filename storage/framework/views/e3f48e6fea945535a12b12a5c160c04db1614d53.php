@@ -1,5 +1,10 @@
-<x-default-layout>
-    <x-slot name="head">
+<?php if (isset($component)) { $__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\DefaultLayout::class, []); ?>
+<?php $component->withName('default-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('head', null, []); ?> 
         <style>
 label.error {
     color: red;
@@ -17,7 +22,7 @@ label.error {
 }
  
         </style>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
     
     
   <!-- Modal -->
@@ -27,7 +32,7 @@ label.error {
 <div class="container">
 <nav class="navbar navbar-expand-lg ">
   <div class="container-fluid p-0">
-    <a class="navbar-brand" href="#"><img src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" alt="..."> </a>
+    <a class="navbar-brand" href="#"><img src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.png" alt="..."> </a>
 </nav>
 </div>
 </div>
@@ -42,8 +47,8 @@ label.error {
                     <!-- <h2 >Become a Swasthyam Beneficiary. Enroll Now. </h2> -->
                     
 
-                    <form id="InputFrm" role="form"  method="POST" action="{{url('submissions/save')}}">
-                                @csrf
+                    <form id="InputFrm" role="form"  method="POST" action="<?php echo e(url('submissions/save')); ?>">
+                                <?php echo csrf_field(); ?>
 
                         <div class=" form-cntr-main">
 
@@ -65,7 +70,7 @@ label.error {
                             <div class="form-group phon-number-fld">
 
                                 <div class="input-group  ">
-                                 <img src="{{asset('public/assets/web')}}/img/india.png" alt="..." class="img-fluid">
+                                 <img src="<?php echo e(asset('public/assets/web')); ?>/img/india.png" alt="..." class="img-fluid">
                                         
                                     <span class="input-group-text" id="basic-addon1">  +91</span>  
                                       <input type="tel" id="phone_number" name="phone_number" class="form-control"  placeholder="Phone Number" maxlength= "10">
@@ -82,9 +87,9 @@ label.error {
                                                                      
                                 <select id="inputState" class="form-select" name="branch">
                                     <option value="">Branch</option>
-                                    @foreach($branches as $branch)
-                                    <option value="{{$branch->name}}">{{$branch->name}}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($branch->name); ?>"><?php echo e($branch->name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                         </div>
@@ -175,8 +180,8 @@ label.error {
   
 
 
-        <x-slot name="footer">
-        <script src="{{asset('public/assets/web')}}/js/validate.js"></script>
+         <?php $__env->slot('footer', null, []); ?> 
+        <script src="<?php echo e(asset('public/assets/web')); ?>/js/validate.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
          $(document).ready(function() {
@@ -197,12 +202,12 @@ label.error {
                     invoice: {
                         required: true,
                         remote: {
-                            url: "{{ url('check-invoice') }}",
+                            url: "<?php echo e(url('check-invoice')); ?>",
                             type: 'POST',
                             async: false,
                             data: {
                                 _token: function() {
-                                    var token = "{{csrf_token()}}";
+                                    var token = "<?php echo e(csrf_token()); ?>";
                                     return token;
                                 },
                                 invoice: function() {
@@ -279,5 +284,10 @@ label.error {
 
 
 
-    </x-slot>
-</x-default-layout>
+     <?php $__env->endSlot(); ?>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7)): ?>
+<?php $component = $__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7; ?>
+<?php unset($__componentOriginaladf290bccd57f496936d9c59dfb92e6ffd4acdf7); ?>
+<?php endif; ?><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/web/home.blade.php ENDPATH**/ ?>
