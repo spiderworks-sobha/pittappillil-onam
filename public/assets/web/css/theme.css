@@ -1,6 +1,7 @@
-body{
-    font-family: 'Manrope', sans-serif;
-    overflow-x: hidden;
+body {
+  font-family: 'Manrope', sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 ul, li{
     list-style-type: none;
@@ -762,16 +763,16 @@ label.error {
     display: block;
     }
     footer {
-        padding: 50px 0;
-        text-align: center;
-    }
+      padding: 20px 0;
+      text-align: center;
+  }
     .foot-text {
         text-align: center;
     }
     .banner {
-        padding: 70px 0 0;
-    }
-
+      padding: 70px 0 0;
+      min-height: auto;
+  }
 
     .content-area {
         padding: 20px 28px 0;
@@ -1158,13 +1159,111 @@ h3.green-text {
     transition: .25s ease;
 }
 .loader-animation {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .loader-animation.remove {
     opacity: 0;
     visibility: hidden;
     transition: .25s;
 }
+
+
+  .giftbox {
+    position: relative;
+  }
+  .giftbox .giftbox__top {
+    position: relative;
+    z-index: 3;
+    animation: slideToggle 2.2s cubic-bezier(0.3, 0, 0.9, 1.4) infinite both;
+  }
+  .giftbox .giftbox__middle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    animation: couponshake 2.2s cubic-bezier(0.3, 0, 0.9, 1.4) infinite both;
+  }
+  .giftbox .giftbox__bottom {
+    margin-top: -5px;
+    position: relative;
+    z-index: 2;
+  }
+  .giftbox svg {
+    margin: 0 auto;
+    display: table;
+  }
+  
+  .gift-animation__text {
+    margin: 30px auto 0;
+    display: table;
+    animation: slideUp 3.5s cubic-bezier(0.3, 0, 0.9, 1.4);
+  }
+  
+  @keyframes slideToggle {
+    0% {
+      transform: translateY(0);
+    }
+    15% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-70px);
+    }
+    80% {
+      transform: translateY(-70px);
+    }
+    90% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes couponshake {
+    0% {
+      transform: translateY(0);
+    }
+    35% {
+      transform: translateY(-62px);
+    }
+    45% {
+      transform: translateY(-62px);
+      left: 0;
+    }
+    55% {
+      left: -10px;
+    }
+    60% {
+      left: 10px;
+    }
+    65% {
+      left: -10px;
+    }
+    70% {
+      left: 10px;
+    }
+    75% {
+      left: 0;
+    }
+    78% {
+      transform: translateY(-62px);
+    }
+    90% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    60% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

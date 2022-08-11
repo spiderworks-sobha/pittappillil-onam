@@ -69,9 +69,9 @@ a.paginate_button.current {
 }
 
 .modal-dialog {
-    max-width: 550px !important;
+    max-width: 500px !important;
     margin: auto;
-    margin-top: 60px;
+    margin-right: 0;
 }
 button.close {
     float: right;
@@ -84,11 +84,16 @@ button.close {
 .modal-content {
     bottom: 0px;
     border-color: transparent;
-    border-radius: 5px;
-    /* box-shadow: 0px 4px 16px 18px rgb(237 238 238 / 33%); */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
 }
 
-
+.modal-content {
+    height: 100vh;
+}
 tr.odd {
     background-color: #f7fbff !important;
     --bs-table-accent-bg: #f7fbff !important;
@@ -98,6 +103,7 @@ tr.odd {
 table.dataTable tbody th, table.dataTable tbody td {
     padding: 15px 10px;
     color: rgba(21, 20, 57, 0.8);
+    border: 0px;
 }
 
 
