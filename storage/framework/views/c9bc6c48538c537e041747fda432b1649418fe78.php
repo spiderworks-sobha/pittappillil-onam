@@ -106,16 +106,6 @@ label.error {
                         </div>
 
 
-
-                        <div class="col-12">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="check" name="check">
-                            <label class="form-check-label" for="gridCheck">
-                                I agree to the <b><a href="">terms and conditions</a></b>
-                            </label>
-                          </div>
-                        </div>
-
                         <div id="errors-holder" style="display:none;" class="alert alert-danger alert-dismissible fade show">
                                             <strong>Error!</strong>
                                             <p id="errors"></p>
@@ -141,13 +131,7 @@ label.error {
 
 
                 </div>
-                <div class="form-cntr">
-    <div class="form-cntr-main text-center">
-        <h3>Congratulations!</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120"><path fill="none" d="M0 0h24v24H0z"/><path d="M15 2a4 4 0 0 1 3.464 6.001L23 8v2h-2v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10H1V8l4.536.001A4 4 0 0 1 12 3.355 3.983 3.983 0 0 1 15 2zm-2 8h-2v10h2V10zM9 4a2 2 0 0 0-.15 3.995L9 8h2V6a2 2 0 0 0-1.697-1.977l-.154-.018L9 4zm6 0a2 2 0 0 0-1.995 1.85L13 6v2h2a2 2 0 0 0 1.995-1.85L17 6a2 2 0 0 0-2-2z"/></svg>
-        <p>You have received <span>CERAMIC MUG</span></p>
-    </div>
-</div>
+                
             </div>
 
         </div>
@@ -194,10 +178,7 @@ label.error {
                                 }
                             }
                         }
-                    },
-                    check: {
-                        required: true,
-                    },
+                    }
                 },
                 messages: {
                     name: {
@@ -212,10 +193,7 @@ label.error {
                     invoice: {
                         required: "Please enter invoice number",
                         remote: "This invoice is already claimed"
-                    },
-                    check: {
-                        required: "Please agree to the terms and conditions",
-                    },
+                    }
                 },
                 submitHandler:function(form)
                 {
@@ -230,7 +208,7 @@ label.error {
                             processData: false,
                             contentType: false, 
                             success: function(data) {
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
+                                $('#submit-btn').prop('disabled', false).html(submit_btn_text);
                                 if (typeof data.errors != "undefined") {
                                     var errors = JSON.parse(JSON.stringify(data.errors))
                                     display_error(errors);
@@ -241,7 +219,7 @@ label.error {
                                 }
                             },
                             error:function(xhr){
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
+                                $('#submit-btn').prop('disabled', false).html(submit_btn_text);
                                 var errors = $.parseJSON(xhr.responseText);
                                 display_error(errors);
                             }
@@ -259,6 +237,10 @@ label.error {
             $('#errors-holder').show();
         } 
         </script>
+
+
+
+
      <?php $__env->endSlot(); ?>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

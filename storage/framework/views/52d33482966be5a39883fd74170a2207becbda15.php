@@ -31,6 +31,11 @@
                                 </div>
                                 <hr/>
                                 <div class="form-group">
+                                    <label for="invoice">Branch: </label>
+                                    <b><?php echo e($obj->branch); ?></b>
+                                </div>
+                                <hr/>
+                                <div class="form-group">
                                     <label for="invoice">Gift: </label>
                                     <b><?php echo e($obj->gift->name); ?></b>
                                 </div>

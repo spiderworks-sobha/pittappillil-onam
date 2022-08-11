@@ -48,3 +48,12 @@
     .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
         background-color: #c0392b !important;
     }a.btn.btn-link {    color: #000;}.container-width {    margin-top: 70px;}
+
+    .error{
+        color: red;
+    }
+    .invoice-response {
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+      }

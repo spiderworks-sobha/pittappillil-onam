@@ -20,7 +20,7 @@
                     <div class="page-title">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Winners</h3>
+                        <h3>Claimed Winners</h3>
                     </div>
 
                     <div class="col-md-6 text-end">
@@ -33,7 +33,7 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="card">
 
-                                <?php echo $__env->make('admin.submissions._partials.table', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                                <?php echo $__env->make('admin.claimed_submissions._partials.table', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
                             </div>
                         </div>
@@ -62,46 +62,6 @@
         var slno_i = 0;
         var order = [0, 'desc'];
 
-        $(function(){
-            $(document).on('click', '#claim_status', function(){
-                if ($(this).is(':checked'))
-                    $('#submit-btn').prop('disabled', false);
-                else
-                    $('#submit-btn').prop('disabled', true); 
-            })
-        })
-
-        $(document).on('click', '#submit-btn', function(){
-            var submit_btn_text = $('#submit-btn').html();
-                    $('#submit-btn').prop('disabled', true).html('Processing...');
-                    var formurl = $('#InputFrm').attr('action');
-                        $.ajax({
-                            url: formurl ,
-                            type: "POST", 
-                            data: new FormData($('#InputFrm')[0]),
-                            cache: false, 
-                            processData: false,
-                            contentType: false, 
-                            success: function(data) {
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
-                                if (typeof data.errors != "undefined") {
-                                    var errors = JSON.parse(JSON.stringify(data.errors))
-                                    display_error(errors);
-                                }
-                                else
-                                {
-                                    $('#form-modal').modal('hide');
-                                    $.alert(data.success);
-                                    dt();
-                                }
-                            },
-                            error:function(xhr){
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
-                                var errors = $.parseJSON(xhr.responseText);
-                                display_error(errors);
-                            }
-                        });
-        })
     </script>
      <?php $__env->endSlot(); ?>
  <?php echo $__env->renderComponent(); ?>
@@ -110,4 +70,4 @@
 <?php $component = $__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e; ?>
 <?php unset($__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e); ?>
 <?php endif; ?>
-<?php /**PATH C:\xampp\htdocs\pitta-onam\resources\views/admin/submissions/index.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\xampp\htdocs\pitta-onam\resources\views/admin/claimed_submissions/index.blade.php ENDPATH**/ ?>

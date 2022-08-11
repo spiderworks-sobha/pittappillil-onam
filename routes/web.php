@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\SpecialInvoiceController;
 use App\Http\Controllers\Admin\SubmissionController;
+use App\Http\Controllers\Admin\ClaimedSubmissionController;
 
 
 
@@ -26,6 +27,8 @@ use App\Http\Controllers\Admin\SubmissionController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('check-invoice', [HomeController::class, 'check_invoice'])->name('check-invoice');
 Route::post('submissions/save', [HomeController::class, 'save'])->name('submissions.save');
+Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');
+Route::post('invoice/search', [HomeController::class, 'invoice_search'])->name('invoice.search');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -59,6 +62,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return abort('404');
     })->name('admin.submissions.change-status');
     Route::post('submissions/update', [SubmissionController::class, 'update'])->name('admin.submissions.update');
+
+    //claimed submissions
+    Route::get('claimed-submissions', [ClaimedSubmissionController::class, 'index'])->name('admin.claimed-submissions.index');
+    Route::get('submissions/create', function(){
+        return abort('404');
+    })->name('admin.claimed-submissions.create');
+    Route::get('claimed-submissions/edit/{id}', [ClaimedSubmissionController::class, 'edit'])->name('admin.claimed-submissions.edit');
+    Route::get('claimed-submissions/destroy/{id}', function(){
+        return abort('404');
+    })->name('admin.claimed-submissions.destroy');
+    Route::get('claimed-submissions/change-status/{id}', function(){
+        return abort('404');
+    })->name('admin.claimed-submissions.change-status');
 
     // settings
     Route::get('admin/settings', [SettingsController::class, 'index'])->name('admin.settings');

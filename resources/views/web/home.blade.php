@@ -101,16 +101,6 @@ label.error {
                         </div>
 
 
-
-                        <div class="col-12">
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="check" name="check">
-                            <label class="form-check-label" for="gridCheck">
-                                I agree to the <b><a href="">terms and conditions</a></b>
-                            </label>
-                          </div>
-                        </div>
-
                         <div id="errors-holder" style="display:none;" class="alert alert-danger alert-dismissible fade show">
                                             <strong>Error!</strong>
                                             <p id="errors"></p>
@@ -136,34 +126,7 @@ label.error {
 
 
                 </div>
-                <div class="form-cntr">
-            <div class="form-cntr-main text-center">
-                                <h3 class="green-text">Congratulations!</h3>
-
-                                <div class="presents">
-                                    <div class="present orange">
-                                    <div class="lid"></div>
-                                    <div class="box"></div>
-                                    <div class="bow"></div>
-                                    <div class="ribbon"></div>
-                                    </div>
-                                    <div class="present blue">
-                                    <div class="lid"></div>
-                                    <div class="box"></div>
-                                    <div class="bow"></div>
-                                    <div class="ribbon"></div>
-                                    </div>
-                                    <div class="present green">
-                                    <div class="lid"></div>
-                                    <div class="box"></div>
-                                    <div class="bow"></div>
-                                    <div class="ribbon"> </div>
-                                    </div>
-                                </div>
-
-                        <p>You have received <span>CERAMIC MUG</span></p>
-                    </div>
-                </div>
+                
             </div>
 
         </div>
@@ -210,10 +173,7 @@ label.error {
                                 }
                             }
                         }
-                    },
-                    check: {
-                        required: true,
-                    },
+                    }
                 },
                 messages: {
                     name: {
@@ -228,10 +188,7 @@ label.error {
                     invoice: {
                         required: "Please enter invoice number",
                         remote: "This invoice is already claimed"
-                    },
-                    check: {
-                        required: "Please agree to the terms and conditions",
-                    },
+                    }
                 },
                 submitHandler:function(form)
                 {
@@ -246,7 +203,7 @@ label.error {
                             processData: false,
                             contentType: false, 
                             success: function(data) {
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
+                                $('#submit-btn').prop('disabled', false).html(submit_btn_text);
                                 if (typeof data.errors != "undefined") {
                                     var errors = JSON.parse(JSON.stringify(data.errors))
                                     display_error(errors);
@@ -257,7 +214,7 @@ label.error {
                                 }
                             },
                             error:function(xhr){
-                                $('#submit-btn').prop('disabled', true).html(submit_btn_text);
+                                $('#submit-btn').prop('disabled', false).html(submit_btn_text);
                                 var errors = $.parseJSON(xhr.responseText);
                                 display_error(errors);
                             }

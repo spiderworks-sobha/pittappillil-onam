@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <title><?php echo e(config('app.name', 'Aster')); ?></title>
-
+    <link rel="shortcut icon" href="<?php echo e(asset('public/assets/img/fav.ico')); ?>"/>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- css -->

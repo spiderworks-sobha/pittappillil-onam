@@ -20,6 +20,34 @@ class HomeController extends Controller
         return view('web.home')->with('branches', $branches);
     }
 
+    public function invoice()
+    {
+        return view('web.invoice');
+    }
+
+    public function invoice_search(Request $request)
+    {
+        $rules = array(
+            'invoice' => 'required|max:255'
+        );
+
+        $messages = [
+            'invoice.required' => 'Please enter your invoice number'
+        ];
+
+        $data = $request->all();
+        $validator = Validator::make($data, $rules, $messages);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()]);
+        }
+
+        $gift = Submission::where('invoice', $data['invoice'])->first();
+        if(!$gift)
+            return response()->json(['errors' => ['invoice'=>'Price not available for this invoice number.']]);
+        else
+            return view('web.invoice_result')->with('gift', $gift); 
+    }
+
     public function check_invoice(Request $request)
     {
         $data = $request->all();

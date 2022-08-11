@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title><?php echo e(config('app.name', 'Pittappillil')); ?></title>
+    <title>Pittappillil</title>
 
+    <link rel="shortcut icon" href="<?php echo e(asset('public/assets/img/fav.ico')); ?>"/>
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <!-- css -->
@@ -38,6 +39,9 @@
             /* background-image: url('<?php echo e(asset("public/assets/img/faild.png")); ?>'); */
             width: 20%;
 
+        }
+        .error{
+            color: red;
         }
     </style>
 </head>
