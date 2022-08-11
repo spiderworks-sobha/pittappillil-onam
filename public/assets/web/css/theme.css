@@ -771,7 +771,7 @@ label.error {
     }
     .banner {
       padding: 70px 0 0;
-      min-height: auto;
+      min-height: 100vh;
   }
 
     .content-area {
