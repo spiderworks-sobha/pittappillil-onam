@@ -6,7 +6,7 @@
         height: 100%;
         background: #fff  !important;
     }.form-control:focus{  outline:none;	   box-shadow: 0px;    box-shadow: none;}
-.user_card {   height: 250px;    width: 400px;    margin-top: auto;    margin-bottom: auto;    position: relative;    display: flex;    justify-content: center;    flex-direction: column;    padding: 10px;    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    background: #fff4f4 !important;    border: 1px solid rgba(104, 104, 104, 0.15);    box-shadow: 0px 11px 37px rgb(72 113 215 / 9%);    border-radius: 5px;    transition: .25s;}
+.user_card {   height: auto;    width: 400px;    margin-top: auto;    margin-bottom: auto;    position: relative;    display: flex;    justify-content: center;    flex-direction: column;    padding: 40px 20px;    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    background: #fff4f4 !important;    border: 1px solid rgba(104, 104, 104, 0.15);    box-shadow: 0px 11px 37px rgb(72 113 215 / 9%);    border-radius: 5px;    transition: .25s;}
 
 /* 
 
@@ -25,8 +25,11 @@
         position: absolute;
         top: -60px;
     }
+    .invoice-response.w-100.text-center p {
+        margin-bottom: 0;
+    }
 
-    #login-form{    width: 100%;    padding: 0 30px}
+    #login-form{    width: 100%;    padding: 0 0px}
     .brand_logo {
         height: 40px;
     }
@@ -60,8 +63,12 @@
         color: red;
     }
     .invoice-response {
-        padding: 20px;
+        padding: 10px;
         border: 1px solid #ddd;
         margin-top: 20px;
       }
+      div#errors-holder ul {
+        margin: 0;
+        padding: 10px 20px 0;
+    }
 
