@@ -5,7 +5,7 @@
             <div class="user_card" style="margin-top:70px ;">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{asset('public/assets/img/logo.jpg')}}" class="brand_logo" alt="Logo">
+                    <img src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" class="brand_logo" alt="Logo">
                     </div>
                 </div>
                 <div class="d-flex justify-content-center form_container">

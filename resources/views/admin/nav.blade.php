@@ -1,6 +1,6 @@
 <nav id="sidebar" class="">
     <div class="sidebar-header" style="background-color: #f4f6fa;">
-        <img src="{{asset('public/assets')}}/img/logo.jpg" style="width: 20%;" alt="bootraper logo" class="app-logo">
+    <img width="150px" src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" class="brand_logo" alt="Logo">
     </div>
     <ul class="list-unstyled components text-secondary">
 

@@ -489,8 +489,8 @@ table.dataTable>tbody>tr.child ul.dtr-details {
 
 .btn-light {
     color: #fff;
-    background-color: #2D3387;
-    border-color: #2D3387;
+    background-color: #bc0000;
+    border-color: #bc0000;
     transition:.25s;
 }
 
@@ -507,4 +507,11 @@ div#update-success {
     top: 0;
     width: 100%;
     z-index: 100;
+}
+
+div#datatable_length {
+    padding: 20px;
+}
+div#datatable_filter {
+    padding: 20px;
 }

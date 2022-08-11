@@ -69,9 +69,9 @@ a.paginate_button.current {
 }
 
 .modal-dialog {
-    max-width: 500px !important;
+    max-width: 550px !important;
     margin: auto;
-    margin-right: 0;
+    margin-top: 60px;
 }
 button.close {
     float: right;
@@ -84,11 +84,8 @@ button.close {
 .modal-content {
     bottom: 0px;
     border-color: transparent;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    box-shadow: 0px 4px 16px 18px rgb(237 238 238 / 33%);
+    border-radius: 5px;
+    /* box-shadow: 0px 4px 16px 18px rgb(237 238 238 / 33%); */
 }
 
 
