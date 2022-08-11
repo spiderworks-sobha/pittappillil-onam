@@ -30,6 +30,10 @@ Route::post('submissions/save', [HomeController::class, 'save'])->name('submissi
 Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');
 Route::post('invoice/search', [HomeController::class, 'invoice_search'])->name('invoice.search');
 
+Route::get('generate-password', function(){
+    echo bcrypt('Admin@2022');
+})->name('generate-password');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     
