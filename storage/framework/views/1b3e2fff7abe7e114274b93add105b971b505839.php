@@ -9,7 +9,7 @@
             <div class="user_card" style="margin-top:150px ;">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="<?php echo e(asset('public/assets/img/logo.jpg')); ?>" class="brand_logo" alt="Logo">
+                    <img src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.png" class="brand_logo" alt="Logo">
                     </div>
                 </div>
                 <!-- Session Status -->
