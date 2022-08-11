@@ -57,6 +57,6 @@
                                     <div class="ribbon"> </div>
                                     </div>
                                 </div>
-                                <p>You have received a <span>{{$gift->name}}</span></p>
+                                <p>You have received a <span><b>{{$gift->name}}</b></span></p>
                             </div>
                         </div>
