@@ -128,8 +128,6 @@ label.error {
                             
                         </div>
                       </form>
-
-
                 </div>
                 
             </div>
@@ -138,6 +136,8 @@ label.error {
 
  
 </div>
+
+
 
 </section>
   
@@ -216,6 +216,13 @@ label.error {
                                 else
                                 {
                                     $('#response-body').html(data);
+                                    setInterval(function(){ 
+                                        $('.pageload').addClass("active")
+                                    }, 4000);
+
+                                    setInterval(function(){ 
+                                        $('.loader-animation').addClass("remove")
+                                    }, 4000);
                                 }
                             },
                             error:function(xhr){
@@ -237,8 +244,6 @@ label.error {
             $('#errors-holder').show();
         } 
         </script>
-
-
 
 
      <?php $__env->endSlot(); ?>
