@@ -7,8 +7,8 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Aster Medcity </title>
-	<link rel="shortcut icon" href="http://localhost/tist/assets/images/fav.png"/>
+	<title>Pittappillil</title>
+	<link rel="shortcut icon" href="<?php echo e(asset('public/assets/img/fav.ico')); ?>"/>
 <!-- styles-->
 <link rel="stylesheet" href="<?php echo e(asset('public/assets/web')); ?>/css/bootstrap.css "/> 
 <link rel="stylesheet" href="<?php echo e(asset('public/assets/web')); ?>/css/theme.css "/>  
@@ -40,8 +40,7 @@
             <div class="container">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-4">
-                    <img width="150px" src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.webp" alt="..."> 
-                            
+                    <img width="150px" src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.png" alt="..."> 
                     </div>
                      <div class="col-md-4 foot-text" style="">
                          <!--<a href="https://www.spiderworks.in/" target="_blank" rel="nofollow">Developed By: SpiderWorks</a>-->
@@ -49,7 +48,6 @@
                     </div>
                     <div class="col-md-4 foot-text">
                          
-                        <a href="https://www.asterhospitals.in/privacy-policy" target="_blank">Privacy Policy</a>
                         <span><svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="2" cy="2" r="2" fill="#D9D9D9"/>
                             </svg>
@@ -84,40 +82,6 @@
  
   <?php echo e($footer??''); ?>
 
-
-<script type="text/javascript"> 
- 
-
-  
- $(document).ready(function(){
-
-
-
-//   $("#next-step").click(function(){
-//     $("#step-first").addClass("hide");
-//     $("#step-two").removeClass("hide");
-//   });
-
-
- 
-
-
-});
-
-
- 
-
-
- 
- 
-</script>
- 
-
-  
-
-
-
- 
 
 </body>
 </html><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/layouts/default.blade.php ENDPATH**/ ?>

@@ -1,19 +1,35 @@
-<x-guest-layout>
+<?php if (isset($component)) { $__componentOriginalc3251b308c33b100480ddc8862d4f9c79f6df015 = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\GuestLayout::class, []); ?>
+<?php $component->withName('guest-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
     <div class="container h-100" style="">
         <div class="d-flex justify-content-center h-100">
             <div class="user_card" style="margin-top:150px ;">
                 <div class="d-flex justify-content-center">
                     <div class="brand_logo_container">
-                        <img src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" class="brand_logo" alt="Logo">
+                        <img src="<?php echo e(asset('public/assets/web')); ?>/img/pittappillil-logo.png" class="brand_logo" alt="Logo">
                     </div>
                 </div>
                 <!-- Session Status -->
-                <x-auth-session-status class="mb-4" :status="session('status')" />
+                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'components.auth-session-status','data' => ['class' => 'mb-4','status' => session('status')]]); ?>
+<?php $component->withName('auth-session-status'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['class' => 'mb-4','status' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(session('status'))]); ?>
+<?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
 
                 <!-- Validation Errors -->
                 <div class="d-flex justify-content-center">
-                    <form id="InputFrm" method="POST" action="{{ route('invoice.search') }}">
-                        @csrf
+                    <form id="InputFrm" method="POST" action="<?php echo e(route('invoice.search')); ?>">
+                        <?php echo csrf_field(); ?>
                         <p>Enter your invoice number to know the price you have won.</p>
                         <div class="input-group mb-3">
                             <input id="invoice" type="text" class="form-control w-100" name="invoice" class="form-control" placeholder="Invoice Number">
@@ -35,8 +51,8 @@
             </div>
         </div>
     </div>
-    <x-slot name="footer">
-        <script src="{{asset('public/assets/web')}}/js/validate.js"></script>
+     <?php $__env->slot('footer', null, []); ?> 
+        <script src="<?php echo e(asset('public/assets/web')); ?>/js/validate.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
          $(document).ready(function() {
@@ -94,5 +110,10 @@
         } 
         </script>
 
-    </x-slot>
-</x-guest-layout>
+     <?php $__env->endSlot(); ?>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc3251b308c33b100480ddc8862d4f9c79f6df015)): ?>
+<?php $component = $__componentOriginalc3251b308c33b100480ddc8862d4f9c79f6df015; ?>
+<?php unset($__componentOriginalc3251b308c33b100480ddc8862d4f9c79f6df015); ?>
+<?php endif; ?><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/web/invoice.blade.php ENDPATH**/ ?>

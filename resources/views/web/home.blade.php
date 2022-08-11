@@ -125,6 +125,45 @@ label.error {
                       </form>
 
 
+
+                      <div class="loader-animation">
+
+                    <span class="loadWords">Loading...</span>
+                    <span class="loading__anim"></span>
+
+                    </div>
+
+
+                      <div class="form-cntr pageload">
+    <div class="form-cntr-main text-center ">
+
+       
+
+        <h3 class="green-text">Congratulations!</h3>
+        <div class="presents">
+            <div class="present orange">
+            <div class="lid"></div>
+            <div class="box"></div>
+            <div class="bow"></div>
+            <div class="ribbon"></div>
+            </div>
+            <div class="present blue">
+            <div class="lid"></div>
+            <div class="box"></div>
+            <div class="bow"></div>
+            <div class="ribbon"></div>
+            </div>
+            <div class="present green">
+            <div class="lid"></div>
+            <div class="box"></div>
+            <div class="bow"></div>
+            <div class="ribbon"> </div>
+            </div>
+        </div>
+        <p>You have received a <span></span></p>
+    </div>
+</div>
+
                 </div>
                 
             </div>
@@ -133,6 +172,8 @@ label.error {
 
  
 </div>
+
+
 
 </section>
   
@@ -234,6 +275,24 @@ label.error {
         </script>
 
 
+
+<script>
+    $(window).ready(function(){
+    setInterval(function(){ 
+        $('.pageload').addClass("active")
+    }, 2000);
+
+    });
+
+
+    $(window).ready(function(){
+    setInterval(function(){ 
+        $('.loader-animation').addClass("remove")
+    }, 2000);
+
+    });
+
+</script>
 
 
     </x-slot>

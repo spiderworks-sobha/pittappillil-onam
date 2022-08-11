@@ -38,8 +38,7 @@
             <div class="container">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-4">
-                    <img width="150px" src="{{asset('public/assets/web')}}/img/pittappillil-logo.webp" alt="..."> 
-                            
+                    <img width="150px" src="{{asset('public/assets/web')}}/img/pittappillil-logo.png" alt="..."> 
                     </div>
                      <div class="col-md-4 foot-text" style="">
                          <!--<a href="https://www.spiderworks.in/" target="_blank" rel="nofollow">Developed By: SpiderWorks</a>-->
