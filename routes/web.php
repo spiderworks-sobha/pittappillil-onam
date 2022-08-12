@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GiftController;
 use App\Http\Controllers\Admin\SpecialInvoiceController;
 use App\Http\Controllers\Admin\SubmissionController;
 use App\Http\Controllers\Admin\ClaimedSubmissionController;
+use App\Http\Controllers\Admin\SettingsController;
 
 
 
@@ -26,6 +27,7 @@ use App\Http\Controllers\Admin\ClaimedSubmissionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::post('check-invoice', [HomeController::class, 'check_invoice'])->name('check-invoice');
+Route::post('check-verification-code', [HomeController::class, 'check_verification_code'])->name('check-verification-code');
 Route::post('submissions/save', [HomeController::class, 'save'])->name('submissions.save');
 Route::get('invoice', [HomeController::class, 'invoice'])->name('invoice');
 Route::post('invoice/search', [HomeController::class, 'invoice_search'])->name('invoice.search');
@@ -81,8 +83,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     })->name('admin.claimed-submissions.change-status');
 
     // settings
-    Route::get('admin/settings', [SettingsController::class, 'index'])->name('admin.settings');
-    Route::post('admin/setting/update', [SettingsController::class, 'update'])->name('admin.setting.update');
+    Route::get('settings', [SettingsController::class, 'index'])->name('admin.settings');
+    Route::post('setting/update', [SettingsController::class, 'update'])->name('admin.setting.update');
 });
 
 require __DIR__ . '/auth.php';

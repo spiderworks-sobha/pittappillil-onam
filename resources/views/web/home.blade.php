@@ -89,15 +89,24 @@ label.error {
                             </div>
                         </div>
 
-                         
-                        <div class="col-md-12 col-12"> 
+                        <div class="col-md-6 col-6"> 
                             <div class="form-group"> 
                                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.1834 1.82899C14.8291 1.46534 14.3047 1.32986 13.8157 1.47247L2.41399 4.78808C1.89812 4.9314 1.53247 5.34282 1.43397 5.86547C1.33334 6.3974 1.68482 7.07264 2.14401 7.355L5.70909 9.54615C6.07474 9.77076 6.54669 9.71443 6.84927 9.40925L10.9316 5.30146C11.1371 5.08755 11.4773 5.08755 11.6828 5.30146C11.8883 5.50824 11.8883 5.84337 11.6828 6.05728L7.59332 10.1658C7.29003 10.4702 7.23334 10.9444 7.45656 11.3123L9.63487 14.9132C9.88997 15.341 10.3293 15.5834 10.8112 15.5834C10.8679 15.5834 10.9316 15.5834 10.9883 15.5763C11.5411 15.505 11.9804 15.1271 12.1434 14.5923L15.5235 3.20514C15.6723 2.72028 15.5377 2.19263 15.1834 1.82899" fill="#130F26" fill-opacity="0.83"/>
                                     </svg>
                                     
-                          <input type="text" id="invoice" name="invoice" class="form-control" placeholder="Invoice Number" >
+                                <input type="text" id="verification_code" name="verification_code" class="form-control" placeholder="Verification Code" >
+                            </div>
                         </div>
+                         
+                        <div class="col-md-6 col-6"> 
+                            <div class="form-group"> 
+                                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.1834 1.82899C14.8291 1.46534 14.3047 1.32986 13.8157 1.47247L2.41399 4.78808C1.89812 4.9314 1.53247 5.34282 1.43397 5.86547C1.33334 6.3974 1.68482 7.07264 2.14401 7.355L5.70909 9.54615C6.07474 9.77076 6.54669 9.71443 6.84927 9.40925L10.9316 5.30146C11.1371 5.08755 11.4773 5.08755 11.6828 5.30146C11.8883 5.50824 11.8883 5.84337 11.6828 6.05728L7.59332 10.1658C7.29003 10.4702 7.23334 10.9444 7.45656 11.3123L9.63487 14.9132C9.88997 15.341 10.3293 15.5834 10.8112 15.5834C10.8679 15.5834 10.9316 15.5834 10.9883 15.5763C11.5411 15.505 11.9804 15.1271 12.1434 14.5923L15.5235 3.20514C15.6723 2.72028 15.5377 2.19263 15.1834 1.82899" fill="#130F26" fill-opacity="0.83"/>
+                                    </svg>
+                                    
+                                <input type="text" id="invoice" name="invoice" class="form-control" placeholder="Invoice Number" >
+                            </div>
                         </div>
 
 
@@ -157,6 +166,23 @@ label.error {
                     branch: {
                         required: true,
                     },
+                    verification_code: {
+                        required: true,
+                        remote: {
+                            url: "{{ url('check-verification-code') }}",
+                            type: 'POST',
+                            async: false,
+                            data: {
+                                _token: function() {
+                                    var token = "{{csrf_token()}}";
+                                    return token;
+                                },
+                                verification_code: function() {
+                                    return $("#verification_code").val();
+                                }
+                            }
+                        }
+                    },
                     invoice: {
                         required: true,
                         remote: {
@@ -188,6 +214,10 @@ label.error {
                     invoice: {
                         required: "Please enter invoice number",
                         remote: "This invoice is already claimed"
+                    },
+                    verification_code: {
+                        required: "Please enter the verification code provided by the shop",
+                        remote: "Invalid verification code."
                     }
                 },
                 submitHandler:function(form)

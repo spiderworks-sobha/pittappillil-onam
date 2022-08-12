@@ -57,6 +57,6 @@
                                     <div class="ribbon"> </div>
                                     </div>
                                 </div>
-                                <p>You have received a <span><?php echo e($gift->name); ?></span></p>
+                                <p>You have received a <span><b><?php echo e($gift->name); ?></b></span></p>
                             </div>
                         </div><?php /**PATH C:\xampp\htdocs\pitta-onam\resources\views/web/thankyou.blade.php ENDPATH**/ ?>

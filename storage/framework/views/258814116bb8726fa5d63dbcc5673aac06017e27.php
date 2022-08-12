@@ -1,13 +1,18 @@
-<x-admin-app-layout>
-    <x-slot name="head">
-    </x-slot>
+<?php if (isset($component)) { $__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AdminAppLayout::class, []); ?>
+<?php $component->withName('admin-app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('head', null, []); ?> 
+     <?php $__env->endSlot(); ?>
     <div class="wrapper">
 
-        @include('admin.nav')
+        <?php echo $__env->make('admin.nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
         <div id="body" class="active">
             <!-- navbar navigation component -->
-            @include('admin.drop_nav')
+            <?php echo $__env->make('admin.drop_nav', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
             <!-- end of navbar navigation -->
             <div class="content">
@@ -34,13 +39,13 @@
                                 <div class="tab-pane fade active show" id="verification" role="tabpanel" aria-labelledby="verification-tab">
                                     
                                     <form id="smtp-form">
-                                        @csrf
+                                        <?php echo csrf_field(); ?>
                                         <input type="hidden" name="id" value="1" class="form-control">
                                         <div class="col-md-6">
                                             <p class="text-muted">Verification code to validate the user in website</p>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Verification Code</label>
-                                                <input type="text" name="code" value="{{$data['varification-code']}}" class="form-control">
+                                                <input type="text" name="code" value="<?php echo e($data['varification-code']); ?>" class="form-control">
                                             </div>
                                             <div class="mb-3 text-end">
                                                 <button class="btn btn-success" id="smtp-submit" type="submit"><i class="fas fa-check"></i> Save</button>
@@ -58,7 +63,7 @@
 
         </div>
     </div>
-    <x-slot name="footer">
+     <?php $__env->slot('footer', null, []); ?> 
 
 
 
@@ -78,7 +83,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: "{{url('admin/setting/update')}}",
+                        url: "<?php echo e(url('admin/setting/update')); ?>",
                         data: data,
                         dataType: "json",
                         success: function(resp) {
@@ -107,5 +112,10 @@
             });
         </script>
 
-    </x-slot>
-</x-app-layout>
+     <?php $__env->endSlot(); ?>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e)): ?>
+<?php $component = $__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e; ?>
+<?php unset($__componentOriginal749747b3cad97a84caef38f50f9a7f98dfdbd64e); ?>
+<?php endif; ?><?php /**PATH C:\xampp\htdocs\pitta-onam\resources\views/admin/settings/index.blade.php ENDPATH**/ ?>

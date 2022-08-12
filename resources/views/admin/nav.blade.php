@@ -16,6 +16,9 @@
         <li>
             <a href="{{route('admin.claimed-submissions.index')}}"><i class="fas fa-medal"></i> Claims</a>
         </li>
-
+        <li>
+            <a href="{{route('admin.settings')}}"><i class="fas fa-cogs"></i> Settings</a>
+        </li>
+        
     </ul>
 </nav>

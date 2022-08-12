@@ -57,6 +57,16 @@ class HomeController extends Controller
         else
             echo "true";
     }
+
+    public function check_verification_code(Request $request)
+    {
+        $data = $request->all();
+        $check_exist = DB::table('settings')->where('code', 'varification-code')->first();
+        if(!$check_exist || $check_exist->content != $request->verification_code)
+            echo "false";
+        else
+            echo "true";
+    }
     public function save(Request $request)
     {
 
@@ -81,6 +91,10 @@ class HomeController extends Controller
             return response()->json(['errors' => $validator->errors()->all()]);
         }
 
+        $verify = DB::table('settings')->where('code', 'varification-code')->first();
+        if(!$verify || $verify->content != $data['verification_code']){
+            return response()->json(['errors' => ['verification_code'=>'Invalid verification code']]);
+        }
         $submission = new Submission;
         $submission->fill($data);
         $submission->save();

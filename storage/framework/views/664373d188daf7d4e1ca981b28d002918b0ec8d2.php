@@ -16,6 +16,9 @@
         <li>
             <a href="<?php echo e(route('admin.claimed-submissions.index')); ?>"><i class="fas fa-medal"></i> Claims</a>
         </li>
-
+        <li>
+            <a href="<?php echo e(route('admin.settings')); ?>"><i class="fas fa-cogs"></i> Settings</a>
+        </li>
+        
     </ul>
 </nav><?php /**PATH C:\xampp\htdocs\pitta-onam\resources\views/admin/nav.blade.php ENDPATH**/ ?>

@@ -69,6 +69,8 @@
                 },
                 submitHandler:function(form)
                 {
+                    $('#response-body').empty();
+                    $('#errors-holder').hide();
                     var submit_btn_text = $('#submit-btn').html();
                     $('#submit-btn').prop('disabled', true).html('Processing...');
                     var formurl = $('#InputFrm').attr('action');
