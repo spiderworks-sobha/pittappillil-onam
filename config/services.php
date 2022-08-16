@@ -30,7 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'whatsapp' => [
-        'key' => env('WHATSAPP_API_KEY')
+        'key' => env('WHATSAPP_API_KEY'),
+        'business_id' => env('WHATSAPP_BUSINESS_ID')
+    ],
+    'sms'=> [
+        'user_name' => env('SMS_USER_NAME'),
+        'password' => env('SMS_PASSWORD'),
+        'senderid' => env('SMS_SENDERID'),
     ]
 
 ];
