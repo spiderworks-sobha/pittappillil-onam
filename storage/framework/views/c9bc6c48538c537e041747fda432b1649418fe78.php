@@ -85,10 +85,10 @@ label.error {
                         <div class="col-lg-6 col-md-12 col-12"> 
                             <div class="form-group"> 
                                                                      
-                                <select id="inputState" class="form-select" name="branch">
+                                <select id="branch" class="form-select" name="branch">
                                     <option value="">Branch</option>
                                     <?php $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($branch->name); ?>"><?php echo e($branch->name); ?></option>
+                                    <option value="<?php echo e($branch->name); ?>" data-voucher-series="<?php echo e($branch->voucher_series); ?>"><?php echo e($branch->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -157,6 +157,24 @@ label.error {
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
          $(document).ready(function() {
+            $(document).on('change', '#branch', function(){
+                var voucher_series = $(this).find(':selected').data('voucher-series');
+                $('#invoice').val(voucher_series);
+            })
+
+            jQuery.validator.addMethod("invoice", function (value, element) {
+                if(value.length>0)
+                {
+                    var voucher_series = $('#branch').find(':selected').data('voucher-series');
+
+                    if($.trim(value.replace(voucher_series, "")) == '')
+                        return false;
+                    else
+                        return true;
+                }
+                else
+                    return false;
+            }, "Please enter a valid invoice number");
         $('#InputFrm').validate({
                 rules: {
                     name: {
@@ -176,7 +194,7 @@ label.error {
                         remote: {
                             url: "<?php echo e(url('check-verification-code')); ?>",
                             type: 'POST',
-                            async: false,
+                            //async: false,
                             data: {
                                 _token: function() {
                                     var token = "<?php echo e(csrf_token()); ?>";
@@ -189,11 +207,11 @@ label.error {
                         }
                     },
                     invoice: {
-                        required: true,
+                        invoice: true,
                         remote: {
                             url: "<?php echo e(url('check-invoice')); ?>",
                             type: 'POST',
-                            async: false,
+                            //async: false,
                             data: {
                                 _token: function() {
                                     var token = "<?php echo e(csrf_token()); ?>";
