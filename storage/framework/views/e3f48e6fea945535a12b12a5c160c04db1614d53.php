@@ -85,10 +85,10 @@ label.error {
                         <div class="col-lg-6 col-md-12 col-12"> 
                             <div class="form-group"> 
                                                                      
-                                <select id="inputState" class="form-select" name="branch">
+                                <select id="branch" class="form-select" name="branch">
                                     <option value="">Branch</option>
                                     <?php $__currentLoopData = $branches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $branch): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <option value="<?php echo e($branch->name); ?>"><?php echo e($branch->name); ?></option>
+                                    <option value="<?php echo e($branch->name); ?>" data-voucher-series="<?php echo e($branch->voucher_series); ?>"><?php echo e($branch->name); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -98,7 +98,7 @@ label.error {
                             <div class="form-group"> 
                             
 
-                            <svg version="1.1" id="Layer_1" width="17" height="17" viewBox="0 0 20 20">
+                            <!-- <svg version="1.1" id="Layer_1"  viewBox="0 0 20 20">
                         
                         <g>
                             <path class="st0" d="M19.07,9.14l-0.88-0.66c-0.38-0.3-0.52-0.82-0.34-1.26l0.42-1.02c0.26-0.66-0.16-1.38-0.86-1.48l-1.1-0.14
@@ -113,7 +113,21 @@ label.error {
                                 l-1.82-1.82c-0.4-0.4-0.4-1.06,0-1.46s1.06-0.4,1.46,0l1.08,1.08L12,7.46c0.4-0.4,1.06-0.4,1.46,0S13.86,8.52,13.46,8.92
                                 L13.46,8.92z"/>
                         </g>
-                        </svg>
+                        </svg> -->
+
+
+                        <svg width="17" height="17" version="1.1" id="Layer_1"  x="0px" y="0px"
+                viewBox="0 0 20 20" style="enable-background:new 0 0 20 20;" xml:space="preserve">
+            <path class="st0" d="M17.79,0.84H2.25c-0.99,0-1.79,0.81-1.79,1.79V13c0,0.99,0.81,1.79,1.79,1.79h1.11v2.68
+                c0,0.68,0.4,1.29,1.03,1.55c0.22,0.08,0.44,0.14,0.64,0.14c0.42,0,0.85-0.16,1.17-0.5l3.86-3.86h7.69c0.99,0,1.79-0.81,1.79-1.79
+                l0-10.37C19.58,1.65,18.77,0.84,17.79,0.84L17.79,0.84z M18.43,13c0,0.36-0.3,0.66-0.66,0.66H9.84c-0.16,0-0.3,0.06-0.4,0.16
+                l-4.03,4.05c-0.24,0.22-0.5,0.14-0.58,0.12c-0.08-0.04-0.32-0.16-0.32-0.48l0-3.28c0-0.32-0.26-0.56-0.56-0.56H2.27
+                c-0.36,0-0.66-0.3-0.66-0.66l0-10.37c0-0.36,0.3-0.66,0.66-0.66h15.52c0.36,0,0.66,0.3,0.66,0.66l0,10.37L18.43,13z"/>
+            <path class="st0" d="M12.94,5.29L9.11,9.11L7.1,7.1c-0.22-0.22-0.58-0.22-0.81,0c-0.22,0.22-0.22,0.58,0,0.81l2.42,2.42
+                c0.12,0.12,0.26,0.16,0.4,0.16c0.14,0,0.3-0.06,0.4-0.16l4.23-4.23c0.22-0.22,0.22-0.58,0-0.81C13.52,5.07,13.16,5.07,12.94,5.29
+                L12.94,5.29z"/>
+            </svg>
+
 
 
                                     
@@ -174,6 +188,24 @@ label.error {
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
          $(document).ready(function() {
+            $(document).on('change', '#branch', function(){
+                var voucher_series = $(this).find(':selected').data('voucher-series');
+                $('#invoice').val(voucher_series);
+            })
+
+            jQuery.validator.addMethod("invoice", function (value, element) {
+                if(value.length>0)
+                {
+                    var voucher_series = $('#branch').find(':selected').data('voucher-series');
+
+                    if($.trim(value.replace(voucher_series, "")) == '')
+                        return false;
+                    else
+                        return true;
+                }
+                else
+                    return false;
+            }, "Please enter a valid invoice number");
         $('#InputFrm').validate({
                 rules: {
                     name: {
@@ -193,7 +225,7 @@ label.error {
                         remote: {
                             url: "<?php echo e(url('check-verification-code')); ?>",
                             type: 'POST',
-                            async: false,
+                            //async: false,
                             data: {
                                 _token: function() {
                                     var token = "<?php echo e(csrf_token()); ?>";
@@ -206,11 +238,11 @@ label.error {
                         }
                     },
                     invoice: {
-                        required: true,
+                        invoice: true,
                         remote: {
                             url: "<?php echo e(url('check-invoice')); ?>",
                             type: 'POST',
-                            async: false,
+                            //async: false,
                             data: {
                                 _token: function() {
                                     var token = "<?php echo e(csrf_token()); ?>";

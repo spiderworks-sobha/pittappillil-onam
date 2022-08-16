@@ -59,4 +59,13 @@
                                 </div>
                                 <p>You have received a <span><b><?php echo e($gift->name); ?></b></span></p>
                             </div>
-                        </div><?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/web/thankyou.blade.php ENDPATH**/ ?>
+
+                            <div class="pyro">
+                            <div class="before"></div>
+                            <div class="after"></div>
+                            </div>
+
+                            
+                        </div>
+
+                        <?php /**PATH D:\Xampp\htdocs\pittappillil-onam\resources\views/web/thankyou.blade.php ENDPATH**/ ?>

@@ -59,4 +59,13 @@
                                 </div>
                                 <p>You have received a <span><b>{{$gift->name}}</b></span></p>
                             </div>
+
+                            <div class="pyro">
+                            <div class="before"></div>
+                            <div class="after"></div>
+                            </div>
+
+                            
                         </div>
+
+                        
