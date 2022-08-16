@@ -10,12 +10,14 @@ use App\Models\Submission;
 use App\Models\Gift;
 use App\Models\SpecialInvoice;
 use App\Mail\Test;
+use App\Traits\ServiceTrait;
 use Validator, DB;
 
 class HomeController extends Controller
 {
+    use ServiceTrait;
     public function index()
-    {
+    {        
         $branches = DB::table('branches')->where('status', 1)->get();
         return view('web.home')->with('branches', $branches);
     }
@@ -110,6 +112,9 @@ class HomeController extends Controller
             $submission->gifts_id = $gift->id;
         }
         $submission->save();
+        $message = "Congratulations, you have won {$gift->name} for your invoice number {$submission->invoice} . Visit #link for more offers";
+        //$this->send_whatsapp_message($message, $submission->phone_number);
+        //$this->send_sms($message, $submission->phone_number);
         return view('web.thankyou')->with('gift', $gift);
     }
 
