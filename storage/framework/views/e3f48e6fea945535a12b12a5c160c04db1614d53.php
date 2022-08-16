@@ -94,15 +94,41 @@ label.error {
                             </div>
                         </div>
 
+                        <div class="col-md-6 col-6"> 
+                            <div class="form-group"> 
+                            
+
+                            <svg version="1.1" id="Layer_1" width="17" height="17" viewBox="0 0 20 20">
+                        
+                        <g>
+                            <path class="st0" d="M19.07,9.14l-0.88-0.66c-0.38-0.3-0.52-0.82-0.34-1.26l0.42-1.02c0.26-0.66-0.16-1.38-0.86-1.48l-1.1-0.14
+                                c-0.48-0.06-0.86-0.44-0.92-0.92l-0.14-1.1c-0.1-0.7-0.82-1.12-1.48-0.86l-1.02,0.42c-0.44,0.18-0.96,0.04-1.26-0.34l-0.68-0.88
+                                c-0.42-0.56-1.28-0.56-1.7,0l-0.64,0.9c-0.3,0.38-0.82,0.52-1.26,0.34L6.21,1.71C5.56,1.45,4.84,1.87,4.74,2.57L4.6,3.67
+                                C4.54,4.15,4.16,4.53,3.68,4.59l-1.1,0.14c-0.7,0.1-1.12,0.82-0.86,1.48l0.42,1.02C2.32,7.66,2.18,8.18,1.8,8.48L0.92,9.16
+                                c-0.56,0.42-0.56,1.28,0,1.7l0.9,0.66c0.38,0.3,0.52,0.82,0.34,1.26l-0.44,1.02c-0.26,0.66,0.16,1.38,0.86,1.48l1.1,0.14
+                                c0.48,0.06,0.86,0.44,0.92,0.92l0.14,1.1c0.1,0.7,0.82,1.12,1.48,0.86l1.02-0.42c0.44-0.18,0.96-0.04,1.26,0.34l0.68,0.88
+                                c0.42,0.56,1.28,0.56,1.7,0l0.68-0.88c0.3-0.38,0.82-0.52,1.26-0.34l1.02,0.42c0.66,0.26,1.38-0.16,1.48-0.86l0.14-1.1
+                                c0.06-0.48,0.44-0.86,0.92-0.92l1.1-0.14c0.7-0.1,1.12-0.82,0.86-1.48l-0.42-1.02c-0.18-0.44-0.04-0.96,0.34-1.26l0.88-0.68
+                                C19.63,10.42,19.63,9.58,19.07,9.14L19.07,9.14z M13.46,8.92l-3.61,3.61c-0.2,0.2-0.46,0.3-0.74,0.3c-0.28,0-0.54-0.1-0.74-0.3
+                                l-1.82-1.82c-0.4-0.4-0.4-1.06,0-1.46s1.06-0.4,1.46,0l1.08,1.08L12,7.46c0.4-0.4,1.06-0.4,1.46,0S13.86,8.52,13.46,8.92
+                                L13.46,8.92z"/>
+                        </g>
+                        </svg>
+
+
+                                    
+                                <input type="text" id="verification_code" name="verification_code" class="form-control" placeholder="Verification Code" >
+                            </div>
+                        </div>
                          
-                        <div class="col-md-12 col-12"> 
+                        <div class="col-md-6 col-6"> 
                             <div class="form-group"> 
                                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.1834 1.82899C14.8291 1.46534 14.3047 1.32986 13.8157 1.47247L2.41399 4.78808C1.89812 4.9314 1.53247 5.34282 1.43397 5.86547C1.33334 6.3974 1.68482 7.07264 2.14401 7.355L5.70909 9.54615C6.07474 9.77076 6.54669 9.71443 6.84927 9.40925L10.9316 5.30146C11.1371 5.08755 11.4773 5.08755 11.6828 5.30146C11.8883 5.50824 11.8883 5.84337 11.6828 6.05728L7.59332 10.1658C7.29003 10.4702 7.23334 10.9444 7.45656 11.3123L9.63487 14.9132C9.88997 15.341 10.3293 15.5834 10.8112 15.5834C10.8679 15.5834 10.9316 15.5834 10.9883 15.5763C11.5411 15.505 11.9804 15.1271 12.1434 14.5923L15.5235 3.20514C15.6723 2.72028 15.5377 2.19263 15.1834 1.82899" fill="#130F26" fill-opacity="0.83"/>
                                     </svg>
                                     
-                          <input type="text" id="invoice" name="invoice" class="form-control" placeholder="Invoice Number" >
-                        </div>
+                                <input type="text" id="invoice" name="invoice" class="form-control" placeholder="Invoice Number" >
+                            </div>
                         </div>
 
 
@@ -162,6 +188,23 @@ label.error {
                     branch: {
                         required: true,
                     },
+                    verification_code: {
+                        required: true,
+                        remote: {
+                            url: "<?php echo e(url('check-verification-code')); ?>",
+                            type: 'POST',
+                            async: false,
+                            data: {
+                                _token: function() {
+                                    var token = "<?php echo e(csrf_token()); ?>";
+                                    return token;
+                                },
+                                verification_code: function() {
+                                    return $("#verification_code").val();
+                                }
+                            }
+                        }
+                    },
                     invoice: {
                         required: true,
                         remote: {
@@ -193,6 +236,10 @@ label.error {
                     invoice: {
                         required: "Please enter invoice number",
                         remote: "This invoice is already claimed"
+                    },
+                    verification_code: {
+                        required: "Please enter the verification code provided by the shop",
+                        remote: "Invalid verification code."
                     }
                 },
                 submitHandler:function(form)
