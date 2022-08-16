@@ -890,10 +890,16 @@ h3.green-text {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    height: 210px;
     margin-bottom: 20px;
 }
-  
+.presents img {
+  object-fit: contain;
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+
   .green {
     position: relative;
     left: -20px;
@@ -1107,10 +1113,6 @@ h3.green-text {
   .present .bow::after {
     right: 15px;
   }
-
-  .loader{
-
-}
 
 @keyframes load
 {
